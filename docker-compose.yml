@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  app:
+    image: ghcr.io/zuoa/viewnow:main
+    container_name: viewnow
+    restart: "always"
+    ports:
+      - "7080:7080"
+    volumes:
+      - ./data:/app
+    environment:
+      - "TZ=Asia/Shanghai"
+      - "REDIS_HOST=10.0.4.10"
+      - "REDIS_PORT=6379"
+      - "REDIS_DB=7"
+      - "REDIS_PASSWORD=Codvision@2021"
+      - "SECRET_KEY=123123"
