@@ -28,7 +28,7 @@ class HtmlSnippet(BaseModel):
         return ''.join(secrets.choice(alphabet) for _ in range(length))
     
     @classmethod
-    def create_snippet(cls, html_content, title=None):
+    def create_snippet(cls, html_content):
         """Create a new HTML snippet"""
         # Generate a unique short ID
         while True:
@@ -39,8 +39,7 @@ class HtmlSnippet(BaseModel):
                 
         return cls.create(
             id=short_id,
-            html_content=html_content,
-            title=title
+            html_content=html_content
         )
     
     @classmethod

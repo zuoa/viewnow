@@ -66,7 +66,6 @@ def cache_snippet(snippet):
     """Cache HTML snippet"""
     snippet_data = {
         'id': str(snippet.id),
-        'title': snippet.title,
         'html_content': snippet.html_content,
         'created_at': snippet.created_at.isoformat()
     }

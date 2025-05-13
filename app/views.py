@@ -16,7 +16,6 @@ def index():
 def create_snippet():
     """Create a new HTML snippet"""
     html_content = request.form.get('html_content', '')
-    title = request.form.get('title', '')
     
     if not html_content:
         flash('HTML content is required', 'error')
@@ -24,8 +23,7 @@ def create_snippet():
     
     # Create new snippet
     snippet = HtmlSnippet.create_snippet(
-        html_content=html_content,
-        title=title
+        html_content=html_content
     )
     
     # Cache the snippet
