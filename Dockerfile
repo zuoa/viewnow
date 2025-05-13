@@ -1,5 +1,8 @@
 FROM python:3.9-slim
 WORKDIR /app
+
+ENV FLASK_APP=web.py
+
 COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt;
 COPY app ./app
