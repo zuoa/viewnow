@@ -3,7 +3,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt;
 COPY app ./app
-COPY app.py .
+COPY main.py .
 COPY config.py .
 
 
@@ -11,4 +11,4 @@ ENV TZ=Asia/Shanghai
 ENV PYTHONPATH="/app:$PYTHONPATH"
 EXPOSE 7080/tcp
 VOLUME /data
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:7080", "app:app"]
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:7080", "main:app"]

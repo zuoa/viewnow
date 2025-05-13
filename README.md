@@ -51,7 +51,7 @@ ViewNow是一个基于Flask、Peewee、SQLite和Redis的Web应用，用于分享
 flask init-db
 
 # 启动应用
-python app.py
+python main.py
 ```
 
 应用将在 http://localhost:5000 上运行
