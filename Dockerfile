@@ -6,9 +6,11 @@ COPY app ./app
 COPY main.py .
 COPY config.py .
 
+COPY entrypoint.sh .
+RUN chmod +x ./entrypoint.sh
 
 ENV TZ=Asia/Shanghai
 ENV PYTHONPATH="/app:$PYTHONPATH"
 EXPOSE 7080/tcp
 VOLUME /data
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:7080", "main:app"]
+ENTRYPOINT ["/app/entrypoint.sh"]
