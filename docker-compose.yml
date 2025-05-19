@@ -8,11 +8,22 @@ services:
     ports:
       - "7080:7080"
     volumes:
-      - ./data:/app
+      - ./data/app:/app
     environment:
       - "TZ=Asia/Shanghai"
-      - "REDIS_HOST=10.0.4.10"
-      - "REDIS_PORT=6379"
-      - "REDIS_DB=7"
-      - "REDIS_PASSWORD=Codvision@2021"
       - "SECRET_KEY=123123"
+  redis:
+    image: redis:7
+    container_name: redis
+    restart: always
+    environment:
+      - "TZ=Asia/Shanghai"
+    volumes:
+      - ./data/redis:/data
+      - ./data/logs/redis:/logs
+    networks:
+      - bridge_net
+# 网络配置
+networks:
+  bridge_net:
+    driver: bridge
