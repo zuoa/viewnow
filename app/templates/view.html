@@ -145,7 +145,7 @@
                     <div class="mb-3">
                         <h5>分享链接</h5>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="shareUrl" value="{{ request.host_url.rstrip('/') }}{{ url_for('main.view_snippet', snippet_id=snippet.id) }}" readonly>
+                            <input type="text" class="form-control" id="shareUrl" value="" readonly>
                             <button class="btn btn-outline-primary" type="button" id="copyShareBtn">复制</button>
                         </div>
                     </div>
@@ -153,7 +153,7 @@
                     <div class="mb-3">
                         <h5>原始链接</h5>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="rawUrl" value="{{ request.host_url.rstrip('/') }}{{ url_for('main.raw_snippet', snippet_id=snippet.id) }}" readonly>
+                            <input type="text" class="form-control" id="rawUrl" value="" readonly>
                             <button class="btn btn-outline-primary" type="button" id="copyRawBtn">复制</button>
                             <a href="{{ url_for('main.raw_snippet', snippet_id=snippet.id) }}" class="btn btn-outline-primary" target="_blank">打开</a>
                         </div>
@@ -266,6 +266,12 @@
                 },
                 "retina_detect": true
             });
+
+            // Set URLs using window.location.origin
+            const viewPath = "{{ url_for('main.view_snippet', snippet_id=snippet.id) }}";
+            const rawPath = "{{ url_for('main.raw_snippet', snippet_id=snippet.id) }}";
+            document.getElementById('shareUrl').value = window.location.origin + viewPath;
+            document.getElementById('rawUrl').value = window.location.origin + rawPath;
 
             // Highlight code
             document.querySelectorAll('pre code').forEach((block) => {
