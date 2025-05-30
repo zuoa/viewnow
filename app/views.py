@@ -51,7 +51,7 @@ def view_snippet(snippet_id):
         snippet=snippet_data
     )
 
-@main.route('/raw/<snippet_id>', methods=['GET'])
+@main.route('/r/<snippet_id>', methods=['GET'])
 def raw_snippet(snippet_id):
     """View raw HTML content"""
     # Try to get from cache first
